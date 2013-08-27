@@ -145,13 +145,14 @@
                       return "bt";
                     }
                 })(settings.direction),
-                bgColor    : acceptHexColor(settings.color) || "#999",
-                color      : acceptHexColor(settings.bgColor) || $this.css("background-color"),
-                content    : $this.html(),
-                speed      : settings.speed || 500,
-                onBefore   : settings.onBefore || function(){},
-                onEnd      : settings.onEnd || function(){},
-                onAnimation: settings.onAnimation || function(){}
+                bgColor        : acceptHexColor(settings.color) || "#999",
+                color          : acceptHexColor(settings.bgColor) || $this.css("background-color"),
+                content        : $this.html(),
+                speed          : settings.speed || 500,
+                dontChangeColor: settings.dontChangeColor || false,
+                onBefore       : settings.onBefore || function(){},
+                onEnd          : settings.onEnd || function(){},
+                onAnimation    : settings.onAnimation || function(){}
             };
 
             $this
