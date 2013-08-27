@@ -28,7 +28,7 @@
     }
 
     var throwError = function(message) {
-        throw({ name: "jquery.flip.js plugin error", message: message });
+        throw({ name: 'jquery.flip.js plugin error', message: message });
     };
 
     var isIE6orOlder = function() {
@@ -43,7 +43,7 @@
         // The second guess behind this is that IE7+  will keep supporting maxHeight in the future.
 
         // First guess changed to dean edwards ie sniffing http://dean.edwards.name/weblog/2007/03/sniff/
-        return (/*@cc_on!@*/false && (typeof document.body.style.maxHeight === "undefined"));
+        return (/*@cc_on!@*/false && (typeof document.body.style.maxHeight === 'undefined'));
     };
 
 
@@ -101,8 +101,8 @@
     var acceptHexColor=function(color) {
 
         var result = color;
-        if(color && color.indexOf("#") === -1 && color.indexOf("(") === -1) {
-            result = "rgb(" + colors[color].toString() + ")";
+        if(color && color.indexOf('#') === -1 && color.indexOf('(') === -1) {
+            result = 'rgb(' + colors[color].toString() + ')';
         }
         return result;
     };
@@ -133,20 +133,20 @@
                 direction: (function(direction) {
                     switch(direction)
                     {
-                    case "tb":
-                      return "bt";
-                    case "bt":
-                      return "tb";
-                    case "lr":
-                      return "rl";
-                    case "rl":
-                      return "lr";
+                    case 'tb':
+                      return 'bt';
+                    case 'bt':
+                      return 'tb';
+                    case 'lr':
+                      return 'rl';
+                    case 'rl':
+                      return 'lr';
                     default:
-                      return "bt";
+                      return 'bt';
                     }
                 })(settings.direction),
-                bgColor        : acceptHexColor(settings.color) || "#999",
-                color          : acceptHexColor(settings.bgColor) || $this.css("background-color"),
+                bgColor        : acceptHexColor(settings.color) || '#999',
+                color          : acceptHexColor(settings.bgColor) || $this.css('background-color'),
                 content        : $this.html(),
                 speed          : settings.speed || 500,
                 dontChangeColor: settings.dontChangeColor || false,
@@ -163,15 +163,15 @@
             flipObj = {
                 width          : $this.width(),
                 height         : $this.height(),
-                bgColor        : acceptHexColor(settings.bgColor) || $this.css("background-color"),
-                fontSize       : $this.css("font-size") || "12px",
-                direction      : settings.direction || "tb",
-                toColor        : acceptHexColor(settings.color) || "#999",
+                bgColor        : acceptHexColor(settings.bgColor) || $this.css('background-color'),
+                fontSize       : $this.css('font-size') || '12px',
+                direction      : settings.direction || 'tb',
+                toColor        : acceptHexColor(settings.color) || '#999',
                 speed          : settings.speed || 500,
                 top            : $this.offset().top,
                 left           : $this.offset().left,
                 target         : settings.content || null,
-                transparent    : "transparent",
+                transparent    : 'transparent',
                 dontChangeColor: settings.dontChangeColor || false,
                 onBefore       : settings.onBefore || function(){},
                 onEnd          : settings.onEnd || function(){},
@@ -181,7 +181,7 @@
             // This is the first part of a trick to support
             // transparent borders using chroma filter for IE6
             // The color below is arbitrary, lets just hope it is not used in the animation
-            ie6 && (flipObj.transparent = "#123456");
+            ie6 && (flipObj.transparent = '#123456');
 
             $clone = $this.css('visibility', 'hidden')
                 .clone(true)
