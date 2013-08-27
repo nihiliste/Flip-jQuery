@@ -31,22 +31,6 @@
         throw({ name: 'jquery.flip.js plugin error', message: message });
     };
 
-    var isIE6orOlder = function() {
-        // User agent sniffing is clearly out of fashion and $.browser will be be deprectad.
-        // Now, I can't think of a way to feature detect that IE6 doesn't show transparent
-        // borders in the correct way.
-        // Until then, this function will do, and be partly political correct, allowing
-        // 0.01 percent of the internet users to tweak with their UserAgent string.
-        //
-        // Not leadingWhiteSpace is to separate IE family from, well who knows?
-        // Maybe some version of Opera?
-        // The second guess behind this is that IE7+  will keep supporting maxHeight in the future.
-
-        // First guess changed to dean edwards ie sniffing http://dean.edwards.name/weblog/2007/03/sniff/
-        return (/*@cc_on!@*/false && (typeof document.body.style.maxHeight === 'undefined'));
-    };
-
-
     // Some named colors to work with
     // From Interface by Stefan Petre
     // http://interface.eyecon.ro/
@@ -123,7 +107,7 @@
 
     $.fn.flip = function(settings) {
         return this.each(function() {
-            var $this = $(this), flipObj, $clone, dirOption, dirOptions, newContent, ie6 = isIE6orOlder();
+            var $this = $(this), flipObj, $clone, dirOption, dirOptions, newContent;
 
             if($this.data('flipLock')) {
                 return false;
@@ -177,11 +161,6 @@
                 onEnd          : settings.onEnd || function(){},
                 onAnimation    : settings.onAnimation || function(){}
             };
-
-            // This is the first part of a trick to support
-            // transparent borders using chroma filter for IE6
-            // The color below is arbitrary, lets just hope it is not used in the animation
-            ie6 && (flipObj.transparent = '#123456');
 
             $clone = $this.css('visibility', 'hidden')
                 .clone(true)
@@ -306,9 +285,6 @@
             };
 
             dirOption = dirOptions[flipObj.direction]();
-
-            // Second part of IE6 transparency trick.
-            ie6 && (dirOption.start.filter = 'chroma(color=' + flipObj.transparent + ')');
 
             newContent = function() {
                 var target = flipObj.target;
